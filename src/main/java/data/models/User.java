@@ -1,4 +1,4 @@
-package main.java.data.models;
+package data.models;
 
 public class User {
     private int id;

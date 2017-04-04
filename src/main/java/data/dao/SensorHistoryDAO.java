@@ -1,6 +1,5 @@
-package main.java.data.dao;
-
-import main.java.data.models.SensorHistory;
+package data.dao;
+import data.models.SensorHistory;
 
 import java.util.List;
 

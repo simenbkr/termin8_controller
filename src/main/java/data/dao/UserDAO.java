@@ -1,6 +1,7 @@
-package main.java.data.dao;
+package data.dao;
 
-import main.java.data.models.User;
+
+import data.models.User;
 
 import java.util.List;
 

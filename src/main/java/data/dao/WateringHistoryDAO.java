@@ -1,13 +1,14 @@
-package main.java.data.dao;
+package data.dao;
 
-import main.java.data.models.WateringHistory;
+
+import data.models.WateringHistory;
 
 import java.util.List;
 
 public class WateringHistoryDAO implements IDAO<WateringHistory> {
     @Override
     public void update(WateringHistory wateringHistory) {
-        
+
     }
 
     @Override

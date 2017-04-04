@@ -1,6 +1,6 @@
-package main.java.data.dao;
+package data.dao;
 
-import main.java.data.models.Room;
+import data.models.Room;
 
 import java.util.List;
 

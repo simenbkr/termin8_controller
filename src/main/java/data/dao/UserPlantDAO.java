@@ -1,6 +1,6 @@
-package main.java.data.dao;
+package data.dao;
 
-import main.java.data.models.UserPlant;
+import data.models.UserPlant;
 
 import java.util.List;
 

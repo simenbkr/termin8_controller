@@ -1,4 +1,4 @@
-package main.java.data.models;
+package data.models;
 
 public class UserPlant {
     private int plant_id, user_id;
