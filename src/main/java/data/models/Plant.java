@@ -10,6 +10,26 @@ public class Plant {
     private boolean automatic_water;
     private int room_id, plantType_id;
 
+    public Plant(int id) {
+        this.id = id;
+    }
+
+    public Plant(int id, String name, float max_temp, float min_temp,
+                 float min_moisture, float max_moisture, Timestamp last_watered,
+                 boolean automatic_water, int room_id, int plantType_id) {
+        this.id = id;
+        this.name = name;
+        this.max_temp = max_temp;
+        this.min_temp = min_temp;
+        this.min_moisture = min_moisture;
+        this.max_moisture = max_moisture;
+        this.last_watered = last_watered;
+        this.automatic_water = automatic_water;
+        this.room_id = room_id;
+        this.plantType_id = plantType_id;
+    }
+
+
     public int getId(){
         return id;
     }
@@ -76,5 +96,13 @@ public class Plant {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getPlantType_id() {
+        return plantType_id;
+    }
+
+    public void setPlantType_id(int plantType_id) {
+        this.plantType_id = plantType_id;
     }
 }

@@ -8,6 +8,15 @@ public class WateringHistory {
     private Timestamp time_watered;
     private int plant_id;
 
+    public WateringHistory(int id, float temp, float moisture,
+                           Timestamp time_watered, int plant_id) {
+        this.id = id;
+        this.temp = temp;
+        this.moisture = moisture;
+        this.time_watered = time_watered;
+        this.plant_id = plant_id;
+    }
+
 
     public int getId() {
         return id;

@@ -3,6 +3,11 @@ package data.models;
 public class UserPlant {
     private int plant_id, user_id;
 
+    public UserPlant(int plant_id, int user_id) {
+        this.plant_id = plant_id;
+        this.user_id = user_id;
+    }
+
 
     public int getPlant_id() {
         return plant_id;

@@ -5,6 +5,13 @@ public class SensorHistory {
     private float temp, moisture;
     private int plant_id;
 
+    public SensorHistory(int id, float temp, float moisture, int plant_id) {
+        this.id = id;
+        this.temp = temp;
+        this.moisture = moisture;
+        this.plant_id = plant_id;
+    }
+
     public int getId() {
         return id;
     }
