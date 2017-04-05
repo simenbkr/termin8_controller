@@ -20,7 +20,7 @@ public class RoomDAO implements IDAO<Room> {
             st.setString(1, room.getName());
             st.setInt(2, room.getId());
             st.executeUpdate();
-            connection.close()
+            connection.close(); 
         } catch(SQLException e){
             e.printStackTrace();
         }
@@ -34,7 +34,7 @@ public class RoomDAO implements IDAO<Room> {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, room.getId());
             st.executeUpdate();
-            connection.close()
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
