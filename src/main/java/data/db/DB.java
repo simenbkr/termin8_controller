@@ -1,9 +1,10 @@
-package main.java.data.db;
+package data.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 
 
 public class DB {
