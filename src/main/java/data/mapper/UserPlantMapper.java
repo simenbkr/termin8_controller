@@ -9,6 +9,6 @@ import java.sql.SQLException;
 public class UserPlantMapper implements RowMapper<UserPlant> {
     @Override
     public UserPlant mapRow(ResultSet rs, int rowNum) throws SQLException {
-        //TODO
+    	return new UserPlant(rs.getInt("plant_id"), rs.getInt("user_id"), rs.getInt("id"));
     }
 }
