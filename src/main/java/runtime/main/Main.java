@@ -63,12 +63,9 @@ public class Main {
     private static void checkMQTT(BlockingConnection connection) {
         Message message;
         try {
-            System.out.println("sup1");
             while ( (message = connection.receive(1, TimeUnit.SECONDS)) != null) {
 
                 System.out.println(message.toString());
-                System.out.println("sup");
-
                 try {
                     if (message.getTopic().startsWith(TOPIC_PREFIX)) {
 
