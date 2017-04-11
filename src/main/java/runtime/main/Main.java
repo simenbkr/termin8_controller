@@ -5,6 +5,7 @@ import data.dao.SensorHistoryDAO;
 import data.dao.WateringHistoryDAO;
 import data.db.DB;
 import data.models.Plant;
+import data.models.PlantType;
 import data.models.SensorHistory;
 import data.models.WateringHistory;
 import org.fusesource.mqtt.client.BlockingConnection;
@@ -108,7 +109,8 @@ public class Main {
         for (Plant plant : plants) {
 
             SensorHistory lastHistory = new SensorHistoryDAO().getLastByPlantId(plant.getId());
-            if (lastHistory.getMoisture() < plant.getMin_moisture()) {
+            PlantType type = plant.getPlantType();
+            if (lastHistory.getMoisture() < type.getMin_moisture()) {
                 //Needs watering
                 if (plant.isAutomatic_water()) {
                     //Water that shit!
@@ -129,7 +131,7 @@ public class Main {
                     //This is done through Django/webapp though, right?
                 }
 
-            } else if (lastHistory.getMoisture() > plant.getMax_moisture()) {
+            } else if (lastHistory.getMoisture() > type.getMax_moisture()) {
                 //Watered too much, aaaaa!
                 if (plant.isAutomatic_water()) {
                     //STOOOOPPPPOOP
@@ -148,9 +150,9 @@ public class Main {
                 //We gewd.
             }
 
-            if (lastHistory.getTemp() < plant.getMin_temp()) {
+            if (lastHistory.getTemp() < type.getMin_temp()) {
                 //too cold for the plant man. Not good.
-            } else if (lastHistory.getTemp() > plant.getMax_temp()) {
+            } else if (lastHistory.getTemp() > type.getMax_temp()) {
                 //too hot man
             } else {
                 //is gewd.

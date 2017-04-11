@@ -14,14 +14,17 @@ import java.util.List;
 public class PlantTypeDAO implements IDAO<PlantType> {
     @Override
     public void update(PlantType plantType) {
-    	String sql = "UPDATE termin8_django_planttype SET name=? WHERE id=?";
+    	String sql = "UPDATE termin8_django_planttype SET name=?,max_temp=?,min_temp=?,max_moisture=?,min_moisture=? WHERE id=?";
     	
         try {
             Connection connection = DB.getConnection();
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, plantType.getName());
-            st.setInt(2, plantType.getId());
-        
+            st.setFloat(2, plantType.getMax_temp());
+            st.setFloat(3, plantType.getMin_temp());
+            st.setFloat(4, plantType.getMax_moisture());
+            st.setFloat(5, plantType.getMin_moisture());
+            st.setInt(6, plantType.getId());
             st.executeUpdate();
             connection.close(); 
         } catch(SQLException e){
@@ -47,13 +50,16 @@ public class PlantTypeDAO implements IDAO<PlantType> {
 
     @Override
     public int create(PlantType plantType) {
-    	String sql = "INSERT INTO termin8_django_planttype (navn) VALUES(?)";
+    	String sql = "INSERT INTO termin8_django_planttype (navn,max_temp,min_temp,max_moisture,min_moisture) VALUES(?,?,?,?,?)";
         int lastId = -1;
         try {
             Connection connection = DB.getConnection();
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, plantType.getName());
-            
+            st.setFloat(2, plantType.getMax_temp());
+            st.setFloat(3, plantType.getMin_temp());
+            st.setFloat(4, plantType.getMax_moisture());
+            st.setFloat(5, plantType.getMin_moisture());
             
             st.execute();
             ResultSet rs = st.getGeneratedKeys();
