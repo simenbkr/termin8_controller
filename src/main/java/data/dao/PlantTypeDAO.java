@@ -4,10 +4,7 @@ import data.db.DB;
 import data.mapper.PlantTypeMapper;
 import data.models.PlantType;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,7 +51,7 @@ public class PlantTypeDAO implements IDAO<PlantType> {
         int lastId = -1;
         try {
             Connection connection = DB.getConnection();
-            PreparedStatement st = connection.prepareStatement(sql);
+            PreparedStatement st = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             st.setString(1, plantType.getName());
             st.setFloat(2, plantType.getMax_temp());
             st.setFloat(3, plantType.getMin_temp());

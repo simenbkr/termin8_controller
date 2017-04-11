@@ -3,10 +3,8 @@ package data.dao;
 import data.mapper.RoomMapper;
 import data.models.Room;
 import data.db.DB;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,8 +18,8 @@ public class RoomDAO implements IDAO<Room> {
             st.setString(1, room.getName());
             st.setInt(2, room.getId());
             st.executeUpdate();
-            connection.close(); 
-        } catch(SQLException e){
+            connection.close();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -46,15 +44,15 @@ public class RoomDAO implements IDAO<Room> {
         int lastId = -1;
         try {
             Connection connection = DB.getConnection();
-            PreparedStatement st = connection.prepareStatement(sql);
+            PreparedStatement st = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             st.setString(1, room.getName());
             st.execute();
             ResultSet rs = st.getGeneratedKeys();
-            if(rs.next()){
+            if (rs.next()) {
                 lastId = rs.getInt(1);
             }
             connection.close();
-        } catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return lastId;
@@ -69,12 +67,12 @@ public class RoomDAO implements IDAO<Room> {
             ResultSet rs = connection.createStatement().executeQuery(sql);
             rs.beforeFirst();
             RoomMapper mapper = new RoomMapper();
-            while(rs.next()){
+            while (rs.next()) {
                 roomList.add(mapper.mapRow(rs, rs.getRow()));
             }
             connection.close();
             return roomList;
-        } catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
             return null;
         }
@@ -89,7 +87,7 @@ public class RoomDAO implements IDAO<Room> {
             rs.beforeFirst();
             rs.next();
             return new RoomMapper().mapRow(rs, 0);
-        } catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
             return null;
         }

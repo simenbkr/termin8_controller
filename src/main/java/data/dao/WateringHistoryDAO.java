@@ -5,10 +5,7 @@ import data.db.DB;
 import data.mapper.WateringHistoryMapper;
 import data.models.WateringHistory;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,7 +52,7 @@ public class WateringHistoryDAO implements IDAO<WateringHistory> {
         int lastId = -1;
         try {
             Connection connection = DB.getConnection();
-            PreparedStatement st = connection.prepareStatement(sql);
+            PreparedStatement st = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             st.setDouble(1, wateringHistory.getTemp());
             st.setDouble(2,wateringHistory.getMoisture());
             st.setTimestamp(3, wateringHistory.getTime_watered());

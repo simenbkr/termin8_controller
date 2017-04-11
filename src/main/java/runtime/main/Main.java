@@ -60,7 +60,6 @@ public class Main {
         new WateringHistoryDAO().create(wateringHistory);
     }
 
-
     private static void checkMQTT(BlockingConnection connection) {
         Message message;
         try {
@@ -69,18 +68,22 @@ public class Main {
                 System.out.println(message.toString());
                 try {
                     if (message.getTopic().startsWith(TOPIC_PREFIX)) {
-
                         String[] topicParts = message.getTopic().split("/");
                         int plant_id = Integer.valueOf(topicParts[1]).intValue();
 
                         Plant plant = new PlantDAO().getByID(plant_id);
-                        updatePlant(plant);
+                        if(plant != null) {
+                            updatePlant(plant);
 
-                        connection.publish("water/" + plant.getId(),
-                                "start".getBytes(),
-                                QoS.AT_LEAST_ONCE,
-                                false);
+                            connection.publish("water/" + plant.getId(),
+                                    "start".getBytes(),
+                                    QoS.AT_LEAST_ONCE,
+                                    false);
 
+                            debugPrint("Received a message! Topic: " + message.getTopic());
+                        } else {
+                            debugPrint("Received a message about a plant which does not exist.. The topic was: " + message.getTopic());
+                        }
                         message.ack();
                     } else {
                         debugPrint("This should not happen... received a message from a topic which we are not subscribed to.");
@@ -114,6 +117,7 @@ public class Main {
                 //Needs watering
                 if (plant.isAutomatic_water()) {
                     //Water that shit!
+                    debugPrint("Plant with id " + plant.getId() + " needs watering. Sending message to RPi.");
                     try {
                         MQTTConnection.publish("water/" + plant.getId(),
                                 "start".getBytes(),
@@ -135,6 +139,7 @@ public class Main {
                 //Watered too much, aaaaa!
                 if (plant.isAutomatic_water()) {
                     //STOOOOPPPPOOP
+                    debugPrint("Plant with id " + plant.getId() + " has been overwatered. Sending message to stop watering.");
                     try {
                         MQTTConnection.publish("water/" + plant.getId(),
                                 "stop".getBytes(),
@@ -171,24 +176,6 @@ public class Main {
         on a regular schedule.
          */
 
-        /*
-
-         BlockingConnection kobling = MQTTClient.getConnection();
-        System.out.println(kobling.isConnected());
-
-        Topic[] topics = {new Topic("foo", QoS.AT_LEAST_ONCE)};
-
-        byte[] qoses = kobling.subscribe(topics);
-
-        kobling.publish("foo", "Hello".getBytes(), QoS.AT_LEAST_ONCE, false);
-
-        Message message = kobling.receive();
-        System.out.println(message.getTopic());
-        byte[] payload = message.getPayload();
-        System.out.println(new String(payload, "UTF-8"));
-        message.ack();
-
-         */
         BlockingConnection MQTTconnection = establishMQTTConnection();
         Connection DBConnection = DB.getConnection();
 
@@ -212,7 +199,7 @@ public class Main {
                 DBConnection = DB.getConnection();
             }
 
-            if (DBConnection != null) {
+            if (DBConnection != null && MQTTconnection != null) {
                 debugPrint("DB connection OK; checking for constraints.");
                 checkDB(DBConnection, MQTTconnection);
             } else {
