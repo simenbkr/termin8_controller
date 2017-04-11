@@ -110,7 +110,7 @@ public class SensorHistoryDAO implements IDAO<SensorHistory> {
     }
 
     public SensorHistory getLastByPlantId(int plant_id) {
-        String sql = "SELECT * FROM termin8_django_sensorhistory WHERE plant_id=? ORDER BY id DESC LIMIT 1";
+        String sql = "SELECT * FROM termin8_django_sensorhistory WHERE plant_id=? ORDER BY id DESC";
         try {
             Connection connection = DB.getConnection();
             PreparedStatement st = connection.prepareStatement(sql);
@@ -118,8 +118,9 @@ public class SensorHistoryDAO implements IDAO<SensorHistory> {
             ResultSet rs = st.executeQuery();
             rs.beforeFirst();
             rs.next();
+            SensorHistory sh = new SensorHistoryMapper().mapRow(rs, 0);
             connection.close();
-            return new SensorHistoryMapper().mapRow(rs, 0);
+            return sh;
         } catch (SQLException e) {
             e.printStackTrace();
             return null;

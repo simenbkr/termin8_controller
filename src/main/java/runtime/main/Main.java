@@ -46,43 +46,50 @@ public class Main {
         }
     }
 
+    private static void updatePlant(Plant plant){
+        plant.setLast_watered(new Timestamp(System.currentTimeMillis()));
+        new PlantDAO().update(plant);
+
+        SensorHistory lastHistory = new SensorHistoryDAO().getLastByPlantId(plant.getId());
+        WateringHistory wateringHistory = new WateringHistory(9999,lastHistory.getTemp(),
+                lastHistory.getMoisture(),
+                new Timestamp(System.currentTimeMillis()),
+                plant.getId());
+
+        new WateringHistoryDAO().create(wateringHistory);
+    }
+
 
     private static void checkMQTT(BlockingConnection connection) {
-        /*
-        Message message = kobling.receive();
-        System.out.println(message.getTopic());
-        byte[] payload = message.getPayload();
-        System.out.println(new String(payload, "UTF-8"));
-        message.ack();
-        */
         Message message;
         try {
-            while ( (message = connection.receive()) != null) {
-                if(message.getTopic().startsWith(TOPIC_PREFIX)){
+            System.out.println("sup1");
+            while ( (message = connection.receive(1, TimeUnit.SECONDS)) != null) {
 
-                    String[] topicParts = message.getTopic().split("/");
-                    int plant_id = Integer.valueOf(topicParts[1]).intValue();
+                System.out.println(message.toString());
+                System.out.println("sup");
 
-                    Plant plant = new PlantDAO().getByID(plant_id);
-                    plant.setLast_watered(new Timestamp(System.currentTimeMillis()));
-                    new PlantDAO().update(plant);
+                try {
+                    if (message.getTopic().startsWith(TOPIC_PREFIX)) {
 
-                    SensorHistory lastHistory = new SensorHistoryDAO().getLastByPlantId(plant.getId());
-                    WateringHistory wateringHistory = new WateringHistory(9999,lastHistory.getTemp(),
-                            lastHistory.getMoisture(),
-                            new Timestamp(System.currentTimeMillis()),
-                            plant_id);
+                        String[] topicParts = message.getTopic().split("/");
+                        int plant_id = Integer.valueOf(topicParts[1]).intValue();
 
-                    new WateringHistoryDAO().create(wateringHistory);
+                        Plant plant = new PlantDAO().getByID(plant_id);
+                        updatePlant(plant);
 
-                    connection.publish("water/" + plant.getId(),
-                            "start".getBytes(),
-                            QoS.AT_LEAST_ONCE,
-                            false);
+                        connection.publish("water/" + plant.getId(),
+                                "start".getBytes(),
+                                QoS.AT_LEAST_ONCE,
+                                false);
 
-                    message.ack();
-                } else {
-                    debugPrint("This should not happen... received a message from a topic which we are not subscribed to.");
+                        message.ack();
+                    } else {
+                        debugPrint("This should not happen... received a message from a topic which we are not subscribed to.");
+                    }
+                } catch(Exception e){
+                    e.printStackTrace();
+                    debugPrint("Something went wrong trying to checkMQTT.");
                 }
             }
         } catch (Exception e) {
@@ -113,6 +120,9 @@ public class Main {
                                 "start".getBytes(),
                                 QoS.AT_LEAST_ONCE,
                                 false);
+
+                        updatePlant(plant);
+
                     } catch (Exception e) {
                         e.printStackTrace();
                         debugPrint("Something went wrong trying to publish a start message.");
