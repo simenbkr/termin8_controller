@@ -16,22 +16,17 @@ public class PlantDAO implements IDAO<Plant> {
 
     @Override
     public void update(Plant plant) {
-    	String sql = "UPDATE termin8_django_plant SET name=?, max_temp=?,min_temp=?,min_moisture=?,max_moisture=?,"
-    			+ "last_watered=?,automatic_water=?,plant_type_id=?,room_id=? WHERE id=?";
+    	String sql = "UPDATE termin8_django_plant SET name=?,last_watered=?,automatic_water=?,plant_type_id=?,room_id=? WHERE id=?";
     	
         try {
             Connection connection = DB.getConnection();
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, plant.getName());
-            st.setDouble(2, plant.getMax_temp());
-            st.setDouble(3, plant.getMin_temp());
-            st.setDouble(4, plant.getMin_moisture());
-            st.setDouble(5, plant.getMax_moisture());
-            st.setTimestamp(6, plant.getLast_watered());
-            st.setInt(7, plant.isAutomatic_water() ? 1 : 0);
-            st.setInt(8, plant.getPlantType_id());
-            st.setInt(9, plant.getRoom_id());
-            st.setInt(10, plant.getId());
+            st.setTimestamp(2, plant.getLast_watered());
+            st.setInt(3, plant.isAutomatic_water() ? 1 : 0);
+            st.setInt(4, plant.getPlantType_id());
+            st.setInt(5, plant.getRoom_id());
+            st.setInt(6, plant.getId());
         
             st.executeUpdate();
             connection.close(); 
@@ -59,20 +54,16 @@ public class PlantDAO implements IDAO<Plant> {
 
     @Override
     public int create(Plant plant) {
-    	String sql = "INSERT INTO termin8_django_plant (navn,max_temp,min_temp,min_moisture,max_moisture,last_watered,automatic_water,plant_type_id,room_id) VALUES(?,?,?,?,?,?,?,?,?)";
+    	String sql = "INSERT INTO termin8_django_plant (navn,last_watered,automatic_water,plant_type_id,room_id) VALUES(?,?,?,?,?)";
         int lastId = -1;
         try {
             Connection connection = DB.getConnection();
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, plant.getName());
-            st.setDouble(2, plant.getMax_temp());
-            st.setDouble(3, plant.getMin_temp());
-            st.setDouble(4, plant.getMin_moisture());
-            st.setDouble(5, plant.getMax_moisture());
-            st.setTimestamp(6, plant.getLast_watered());
-            st.setInt(7, plant.isAutomatic_water() ? 1 : 0);
-            st.setInt(8, plant.getPlantType_id());
-            st.setInt(9, plant.getRoom_id());
+            st.setTimestamp(2, plant.getLast_watered());
+            st.setInt(3, plant.isAutomatic_water() ? 1 : 0);
+            st.setInt(4, plant.getPlantType_id());
+            st.setInt(5, plant.getRoom_id());
             
             st.execute();
             ResultSet rs = st.getGeneratedKeys();

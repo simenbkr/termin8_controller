@@ -1,20 +1,31 @@
 package data.models;
 
+import data.dao.PlantTypeDAO;
+
 import java.sql.Timestamp;
 
 public class Plant {
     private int id;
     private String name;
-    private float max_temp, min_temp, min_moisture, max_moisture;
+    //private float max_temp, min_temp, min_moisture, max_moisture;
     private Timestamp last_watered;
     private boolean automatic_water;
     private int room_id, plantType_id;
+
+    public Plant(int id, String name, Timestamp last_watered, boolean automatic_water, int room_id, int plantType_id){
+        this.id = id;
+        this.name = name;
+        this.last_watered = last_watered;
+        this.automatic_water = automatic_water;
+        this.room_id = room_id;
+        this.plantType_id = plantType_id;
+    }
 
     public Plant(int id) {
         this.id = id;
     }
 
-    public Plant(int id, String name, float max_temp, float min_temp,
+    /*public Plant(int id, String name, float max_temp, float min_temp,
                  float min_moisture, float max_moisture, Timestamp last_watered,
                  boolean automatic_water, int room_id, int plantType_id) {
         this.id = id;
@@ -27,7 +38,7 @@ public class Plant {
         this.automatic_water = automatic_water;
         this.room_id = room_id;
         this.plantType_id = plantType_id;
-    }
+    } */
 
 
     public int getId(){
@@ -58,7 +69,7 @@ public class Plant {
         this.last_watered = last_watered;
     }
 
-    public float getMax_temp() {
+/*    public float getMax_temp() {
         return max_temp;
     }
 
@@ -88,7 +99,7 @@ public class Plant {
 
     public void setMax_moisture(float max_moisture) {
         this.max_moisture = max_moisture;
-    }
+    } */
 
     public String getName() {
         return name;
@@ -105,4 +116,9 @@ public class Plant {
     public void setPlantType_id(int plantType_id) {
         this.plantType_id = plantType_id;
     }
+
+    public PlantType getPlantType(){
+        return new PlantTypeDAO().getByID(this.getPlantType_id());
+    }
+
 }
