@@ -65,19 +65,20 @@ public class Main {
         try {
             while ( (message = connection.receive(1, TimeUnit.SECONDS)) != null) {
 
-                System.out.println(message.toString());
                 try {
                     if (message.getTopic().startsWith(TOPIC_PREFIX)) {
                         String[] topicParts = message.getTopic().split("/");
-                        int plant_id = Integer.valueOf(topicParts[1]).intValue();
+                        int plant_id = Integer.valueOf(topicParts[1]);
+                        String[] content = (new String(message.getPayload())).split(":");
+                        int time = Integer.valueOf(content[1]);
 
                         Plant plant = new PlantDAO().getByID(plant_id);
                         if(plant != null) {
                             updatePlant(plant);
-
+                            String payload = "start:" + "time:" + time;
                             connection.publish("water/" + plant.getId(),
-                                    "start".getBytes(),
-                                    QoS.AT_LEAST_ONCE,
+                                    payload.getBytes(),
+                                    QoS.EXACTLY_ONCE,
                                     false);
 
                             debugPrint("Received a message! Topic: " + message.getTopic());
@@ -121,7 +122,7 @@ public class Main {
                     try {
                         MQTTConnection.publish("water/" + plant.getId(),
                                 "start".getBytes(),
-                                QoS.AT_LEAST_ONCE,
+                                QoS.EXACTLY_ONCE,
                                 false);
 
                         updatePlant(plant);
@@ -207,10 +208,10 @@ public class Main {
                         " while establishing a connection.");
             }
 
-            //Sleep for 30s.
-            debugPrint("Sleeping for 30s.");
+            //Sleep for 1s so as not to kill the poor RPi.
+            debugPrint("Sleeping for 1s.");
             try {
-                TimeUnit.SECONDS.sleep(30);
+                TimeUnit.SECONDS.sleep(1);
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 debugPrint("Could not sleep. Insomnia sucks, amirite?");
