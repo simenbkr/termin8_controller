@@ -6,10 +6,7 @@ import data.mapper.SensorHistoryMapper;
 import data.models.Plant;
 import data.models.SensorHistory;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,7 +53,7 @@ public class SensorHistoryDAO implements IDAO<SensorHistory> {
         int lastId = -1;
         try {
             Connection connection = DB.getConnection();
-            PreparedStatement st = connection.prepareStatement(sql);
+            PreparedStatement st = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             st.setDouble(1, sensorHistory.getTemp());
             st.setDouble(2, sensorHistory.getMoisture());
             st.setTimestamp(3, sensorHistory.getTime());

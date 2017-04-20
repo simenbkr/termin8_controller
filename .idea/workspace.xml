@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56f441ce-916d-4914-a789-b9080559d130" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/data/dao/PlantDAO.java" afterPath="$PROJECT_DIR$/src/main/java/data/dao/PlantDAO.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/data/dao/PlantTypeDAO.java" afterPath="$PROJECT_DIR$/src/main/java/data/dao/PlantTypeDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/data/mapper/PlantMapper.java" afterPath="$PROJECT_DIR$/src/main/java/data/mapper/PlantMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/data/mapper/PlantTypeMapper.java" afterPath="$PROJECT_DIR$/src/main/java/data/mapper/PlantTypeMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/data/models/Plant.java" afterPath="$PROJECT_DIR$/src/main/java/data/models/Plant.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/data/models/PlantType.java" afterPath="$PROJECT_DIR$/src/main/java/data/models/PlantType.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/data/dao/RoomDAO.java" afterPath="$PROJECT_DIR$/src/main/java/data/dao/RoomDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/data/dao/SensorHistoryDAO.java" afterPath="$PROJECT_DIR$/src/main/java/data/dao/SensorHistoryDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/data/dao/UserDAO.java" afterPath="$PROJECT_DIR$/src/main/java/data/dao/UserDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/data/dao/UserPlantDAO.java" afterPath="$PROJECT_DIR$/src/main/java/data/dao/UserPlantDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/data/dao/WateringHistoryDAO.java" afterPath="$PROJECT_DIR$/src/main/java/data/dao/WateringHistoryDAO.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/runtime/main/Main.java" afterPath="$PROJECT_DIR$/src/main/java/runtime/main/Main.java" />
     </list>
     <ignored path="Controller.iws" />
@@ -32,66 +32,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="MQTTClient.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/runtime/mqtt/MQTTClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/runtime/main/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1632">
-              <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+            <state relative-caret-position="1135">
+              <caret line="92" column="35" selection-start-line="92" selection-start-column="33" selection-end-line="92" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Plant.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/data/models/Plant.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2896#2897#0" expanded="true" />
-                <element signature="e#2969#2970#0" expanded="true" />
-                <marker date="1491922388155" expanded="false" signature="2008:2019" ph=" { " />
-                <marker date="1491922388155" expanded="false" signature="2044:2050" ph=" }" />
-                <marker date="1491922388155" expanded="false" signature="2082:2093" ph=" { " />
-                <marker date="1491922388155" expanded="false" signature="2109:2115" ph=" }" />
-                <marker date="1491922388155" expanded="false" signature="2160:2171" ph=" { " />
-                <marker date="1491922388155" expanded="false" signature="2196:2202" ph=" }" />
-                <marker date="1491922388155" expanded="false" signature="2238:2249" ph=" { " />
-                <marker date="1491922388155" expanded="false" signature="2269:2275" ph=" }" />
-                <marker date="1491922388155" expanded="false" signature="2328:2339" ph=" { " />
-                <marker date="1491922388155" expanded="false" signature="2372:2378" ph=" }" />
-                <marker date="1491922388155" expanded="false" signature="2414:2425" ph=" { " />
-                <marker date="1491922388155" expanded="false" signature="2445:2451" ph=" }" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PlantType.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/data/models/PlantType.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="901">
-              <caret line="59" column="1" selection-start-line="59" selection-start-column="1" selection-end-line="59" selection-end-column="1" />
-              <folding>
-                <element signature="e#694#695#0" expanded="true" />
-                <element signature="e#725#726#0" expanded="true" />
-                <element signature="e#772#773#0" expanded="true" />
-                <element signature="e#812#813#0" expanded="true" />
-                <element signature="e#846#847#0" expanded="true" />
-                <element signature="e#877#878#0" expanded="true" />
-                <element signature="e#924#925#0" expanded="true" />
-                <element signature="e#964#965#0" expanded="true" />
-                <element signature="e#1002#1003#0" expanded="true" />
-                <element signature="e#1037#1038#0" expanded="true" />
-                <element signature="e#1092#1093#0" expanded="true" />
-                <element signature="e#1140#1141#0" expanded="true" />
-                <element signature="e#1178#1179#0" expanded="true" />
-                <element signature="e#1213#1214#0" expanded="true" />
-                <element signature="e#1268#1269#0" expanded="true" />
-                <element signature="e#1316#1317#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -100,19 +57,42 @@
       <file leaf-file-name="PlantMapper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/data/mapper/PlantMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+            <state relative-caret-position="136">
+              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlantTypeMapper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/data/mapper/PlantTypeMapper.java">
+      <file leaf-file-name="WateringHistoryDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/WateringHistoryDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="13" column="28" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
-              <folding />
+            <state relative-caret-position="330">
+              <caret line="59" column="12" selection-start-line="59" selection-start-column="12" selection-end-line="59" selection-end-column="12" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <marker date="1491923864381" expanded="true" signature="351:447" ph="UPDATE termi... " />
+                <marker date="1491923864381" expanded="true" signature="1213:1266" ph="DELETE FROM " />
+                <marker date="1491923864381" expanded="true" signature="1699:1795" ph="INSERT INTO termin8_django_wateringhistory... " />
+                <marker date="1491923864381" expanded="true" signature="2690:2734" ph="SELECT * FRO... termin8_django_wateringhistory" />
+                <marker date="1491923864381" expanded="true" signature="3359:3413" ph="SELECT * FRO... termin8_django_wateringhistory" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserPlantDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/UserPlantDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="302">
+              <caret line="62" column="34" selection-start-line="62" selection-start-column="34" selection-end-line="62" selection-end-column="34" />
+              <folding>
+                <marker date="1491923878205" expanded="true" signature="387:460" ph="UPDATE termi... " />
+                <marker date="1491923878205" expanded="true" signature="981:1033" ph="DELETE FROM " />
+                <marker date="1491923878205" expanded="true" signature="1451:1523" ph="INSERT INTO termin8_django_plant_owned_by... " />
+                <marker date="1491923878205" expanded="true" signature="2258:2301" ph="SELECT * FRO... termin8_django_plant_owned_by" />
+                <marker date="1491923878205" expanded="true" signature="2903:2956" ph="SELECT * FRO... termin8_django_plant_owned_by" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -120,30 +100,64 @@
       <file leaf-file-name="PlantDAO.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/PlantDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="506">
-              <caret line="115" column="0" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
+            <state relative-caret-position="889">
+              <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
               <folding>
-                <marker date="1491922572107" expanded="true" signature="389:497" ph="UPDATE termi... " />
-                <marker date="1491922572107" expanded="true" signature="1187:1230" ph="DELETE FROM " />
-                <marker date="1491922572107" expanded="true" signature="1633:1741" ph="INSERT INTO termin8_django_plant... " />
-                <marker date="1491922572107" expanded="true" signature="2595:2629" ph="SELECT * FRO... termin8_django_plant" />
-                <marker date="1491922572107" expanded="true" signature="3205:3249" ph="SELECT * FRO... termin8_django_plant" />
+                <marker date="1491924778613" expanded="true" signature="291:399" ph="UPDATE termi... " />
+                <marker date="1491924778613" expanded="true" signature="1069:1112" ph="DELETE FROM " />
+                <marker date="1491924778613" expanded="true" signature="1518:1626" ph="INSERT INTO termin8_django_plant... " />
+                <marker date="1491924778613" expanded="true" signature="2508:2542" ph="SELECT * FRO... termin8_django_plant" />
+                <marker date="1491924778613" expanded="true" signature="3124:3168" ph="SELECT * FRO... termin8_django_plant" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlantTypeDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/PlantTypeDAO.java">
+      <file leaf-file-name="SensorHistoryDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/SensorHistoryDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1683">
-              <caret line="108" column="5" selection-start-line="108" selection-start-column="5" selection-end-line="108" selection-end-column="5" />
+            <state relative-caret-position="107">
+              <caret line="55" column="99" selection-start-line="55" selection-start-column="99" selection-end-line="55" selection-end-column="99" />
               <folding>
-                <marker date="1491922751491" expanded="true" signature="411:516" ph="UPDATE termi... " />
-                <marker date="1491922751491" expanded="true" signature="1213:1260" ph="DELETE FROM " />
-                <marker date="1491922751491" expanded="true" signature="1674:1779" ph="INSERT INTO termin8_django_planttype... " />
-                <marker date="1491922751491" expanded="true" signature="2654:2692" ph="SELECT * FRO... termin8_django_planttype" />
-                <marker date="1491922751491" expanded="true" signature="3287:3335" ph="SELECT * FRO... termin8_django_planttype" />
+                <marker date="1491923905766" expanded="true" signature="395:486" ph="UPDATE termi... " />
+                <marker date="1491923905766" expanded="true" signature="1143:1194" ph="DELETE FROM " />
+                <marker date="1491923905766" expanded="true" signature="1624:1715" ph="INSERT INTO termin8_django_sensorHistory... " />
+                <marker date="1491923905766" expanded="true" signature="2584:2626" ph="SELECT * FRO... termin8_django_sensorHistory" />
+                <marker date="1491923905766" expanded="true" signature="3248:3300" ph="SELECT * FRO... termin8_django_sensorHistory" />
+                <marker date="1491923905766" expanded="true" signature="3772:3848" ph="SELECT * FRO... termin8_django_sensorhistory" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RoomDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/RoomDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="46" column="99" selection-start-line="46" selection-start-column="99" selection-end-line="46" selection-end-column="99" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <marker date="1491924782941" expanded="true" signature="283:331" ph="UPDATE termi... " />
+                <marker date="1491924782941" expanded="true" signature="779:821" ph="DELETE FROM " />
+                <marker date="1491924782941" expanded="true" signature="1223:1271" ph="INSERT INTO termin8_django_room... " />
+                <marker date="1491924782941" expanded="true" signature="1933:1966" ph="SELECT * FRO... termin8_django_room" />
+                <marker date="1491924782941" expanded="true" signature="2543:2586" ph="SELECT * FRO... termin8_django_room" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/UserDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="67" column="45" selection-start-line="67" selection-start-column="45" selection-end-line="67" selection-end-column="45" />
+              <folding>
+                <marker date="1491924785398" expanded="true" signature="284:435" ph="UPDATE auth_... " />
+                <marker date="1491924785398" expanded="true" signature="1353:1385" ph="DELETE FROM " />
+                <marker date="1491924785398" expanded="true" signature="1788:1939" ph="INSERT INTO auth_user... " />
+                <marker date="1491924785398" expanded="true" signature="3068:3091" ph="SELECT * FRO... auth_user" />
+                <marker date="1491924785398" expanded="true" signature="3668:3701" ph="SELECT * FRO... auth_user" />
               </folding>
             </state>
           </provider>
@@ -173,8 +187,6 @@
         <option value="$PROJECT_DIR$/src/main/java/data/dao/SensorHistory.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/data/dao/IDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/data/dao/WateringHistoryDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/data/dao/UserDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/data/mapper/RoomMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/data/models/Room.java" />
         <option value="$PROJECT_DIR$/src/main/java/data/mapper/SensorHistoryMapper.java" />
@@ -186,17 +198,19 @@
         <option value="$PROJECT_DIR$/src/main/java/data/models/UserPlant.java" />
         <option value="$PROJECT_DIR$/src/main/java/data/models/WateringHistory.java" />
         <option value="$PROJECT_DIR$/src/main/java/data/db/DB.java" />
-        <option value="$PROJECT_DIR$/src/main/java/data/dao/RoomDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/runtime/mqtt/Main.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/main/java/data/dao/SensorHistoryDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/data/dao/UserPlantDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/data/models/PlantType.java" />
         <option value="$PROJECT_DIR$/src/main/java/data/mapper/PlantMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/data/models/Plant.java" />
         <option value="$PROJECT_DIR$/src/main/java/data/mapper/PlantTypeMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/data/dao/PlantDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/data/dao/WateringHistoryDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/data/dao/UserPlantDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/data/dao/SensorHistoryDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/data/dao/PlantTypeDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/data/dao/PlantDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/data/dao/RoomDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/data/dao/UserDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/runtime/main/Main.java" />
       </list>
     </option>
@@ -935,15 +949,15 @@
       <workItem from="1491322369868" duration="717000" />
       <workItem from="1491387794114" duration="913000" />
       <workItem from="1491747452758" duration="6773000" />
-      <workItem from="1491910874701" duration="4866000" />
+      <workItem from="1491910874701" duration="6960000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16646000" />
+    <option name="totallyTimeSpent" value="18740000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="54" y="-8" width="1874" height="1096" extended-state="0" />
+    <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -954,7 +968,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928064" sideWeight="0.50215286" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32928064" sideWeight="0.49784714" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32928064" sideWeight="0.49784714" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Execute Anonymous" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1159,11 +1173,11 @@
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1491747440540" expanded="true" signature="452:548" ph="UPDATE termi... " />
-            <marker date="1491747440540" expanded="true" signature="1314:1367" ph="DELETE FROM " />
-            <marker date="1491747440540" expanded="true" signature="1800:1896" ph="INSERT INTO termin8_django_wateringhistory... " />
-            <marker date="1491747440540" expanded="true" signature="2758:2802" ph="SELECT * FRO... termin8_django_wateringhistory" />
-            <marker date="1491747440540" expanded="true" signature="3427:3481" ph="SELECT * FRO... termin8_django_wateringhistory" />
+            <marker date="1491923864381" expanded="true" signature="351:447" ph="UPDATE termi... " />
+            <marker date="1491923864381" expanded="true" signature="1213:1266" ph="DELETE FROM " />
+            <marker date="1491923864381" expanded="true" signature="1699:1795" ph="INSERT INTO termin8_django_wateringhistory... " />
+            <marker date="1491923864381" expanded="true" signature="2690:2734" ph="SELECT * FRO... termin8_django_wateringhistory" />
+            <marker date="1491923864381" expanded="true" signature="3359:3413" ph="SELECT * FRO... termin8_django_wateringhistory" />
           </folding>
         </state>
       </provider>
@@ -1183,11 +1197,11 @@
         <state relative-caret-position="119">
           <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
           <folding>
-            <marker date="1491747440537" expanded="true" signature="377:528" ph="UPDATE auth_... " />
-            <marker date="1491747440537" expanded="true" signature="1459:1491" ph="DELETE FROM " />
-            <marker date="1491747440537" expanded="true" signature="1891:2042" ph="INSERT INTO auth_user... " />
-            <marker date="1491747440537" expanded="true" signature="3143:3166" ph="SELECT * FRO... auth_user" />
-            <marker date="1491747440537" expanded="true" signature="3733:3766" ph="SELECT * FRO... auth_user" />
+            <marker date="1491924785398" expanded="true" signature="284:435" ph="UPDATE auth_... " />
+            <marker date="1491924785398" expanded="true" signature="1353:1385" ph="DELETE FROM " />
+            <marker date="1491924785398" expanded="true" signature="1788:1939" ph="INSERT INTO auth_user... " />
+            <marker date="1491924785398" expanded="true" signature="3068:3091" ph="SELECT * FRO... auth_user" />
+            <marker date="1491924785398" expanded="true" signature="3668:3701" ph="SELECT * FRO... auth_user" />
           </folding>
         </state>
       </provider>
@@ -1197,12 +1211,12 @@
         <state relative-caret-position="85">
           <caret line="5" column="53" selection-start-line="5" selection-start-column="53" selection-end-line="5" selection-end-column="53" />
           <folding>
-            <marker date="1491912875510" expanded="true" signature="496:587" ph="UPDATE termi... " />
-            <marker date="1491912875510" expanded="true" signature="1244:1295" ph="DELETE FROM " />
-            <marker date="1491912875510" expanded="true" signature="1725:1816" ph="INSERT INTO termin8_django_sensorHistory... " />
-            <marker date="1491912875510" expanded="true" signature="2652:2694" ph="SELECT * FRO... termin8_django_sensorHistory" />
-            <marker date="1491912875510" expanded="true" signature="3316:3368" ph="SELECT * FRO... termin8_django_sensorHistory" />
-            <marker date="1491912875510" expanded="true" signature="3840:3916" ph="SELECT * FRO... termin8_django_sensorhistory" />
+            <marker date="1491923905766" expanded="true" signature="395:486" ph="UPDATE termi... " />
+            <marker date="1491923905766" expanded="true" signature="1143:1194" ph="DELETE FROM " />
+            <marker date="1491923905766" expanded="true" signature="1624:1715" ph="INSERT INTO termin8_django_sensorHistory... " />
+            <marker date="1491923905766" expanded="true" signature="2584:2626" ph="SELECT * FRO... termin8_django_sensorHistory" />
+            <marker date="1491923905766" expanded="true" signature="3248:3300" ph="SELECT * FRO... termin8_django_sensorHistory" />
+            <marker date="1491923905766" expanded="true" signature="3772:3848" ph="SELECT * FRO... termin8_django_sensorhistory" />
           </folding>
         </state>
       </provider>
@@ -1213,11 +1227,11 @@
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1491747440535" expanded="true" signature="383:431" ph="UPDATE termi... " />
-            <marker date="1491747440535" expanded="true" signature="878:920" ph="DELETE FROM " />
-            <marker date="1491747440535" expanded="true" signature="1322:1370" ph="INSERT INTO termin8_django_room... " />
-            <marker date="1491747440535" expanded="true" signature="1995:2028" ph="SELECT * FRO... termin8_django_room" />
-            <marker date="1491747440535" expanded="true" signature="2601:2644" ph="SELECT * FRO... termin8_django_room" />
+            <marker date="1491924782941" expanded="true" signature="283:331" ph="UPDATE termi... " />
+            <marker date="1491924782941" expanded="true" signature="779:821" ph="DELETE FROM " />
+            <marker date="1491924782941" expanded="true" signature="1223:1271" ph="INSERT INTO termin8_django_room... " />
+            <marker date="1491924782941" expanded="true" signature="1933:1966" ph="SELECT * FRO... termin8_django_room" />
+            <marker date="1491924782941" expanded="true" signature="2543:2586" ph="SELECT * FRO... termin8_django_room" />
           </folding>
         </state>
       </provider>
@@ -1237,11 +1251,11 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1491922572107" expanded="true" signature="389:497" ph="UPDATE termi... " />
-            <marker date="1491922572107" expanded="true" signature="1187:1230" ph="DELETE FROM " />
-            <marker date="1491922572107" expanded="true" signature="1633:1741" ph="INSERT INTO termin8_django_plant... " />
-            <marker date="1491922572107" expanded="true" signature="2595:2629" ph="SELECT * FRO... termin8_django_plant" />
-            <marker date="1491922572107" expanded="true" signature="3205:3249" ph="SELECT * FRO... termin8_django_plant" />
+            <marker date="1491924778613" expanded="true" signature="291:399" ph="UPDATE termi... " />
+            <marker date="1491924778613" expanded="true" signature="1069:1112" ph="DELETE FROM " />
+            <marker date="1491924778613" expanded="true" signature="1518:1626" ph="INSERT INTO termin8_django_plant... " />
+            <marker date="1491924778613" expanded="true" signature="2508:2542" ph="SELECT * FRO... termin8_django_plant" />
+            <marker date="1491924778613" expanded="true" signature="3124:3168" ph="SELECT * FRO... termin8_django_plant" />
           </folding>
         </state>
       </provider>
@@ -1335,17 +1349,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/runtime/mqtt/MQTTClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1071">
-          <caret line="67" column="22" selection-start-line="54" selection-start-column="7" selection-end-line="67" selection-end-column="22" />
-          <folding>
-            <element signature="e#1481#1482#0" expanded="false" />
-            <element signature="e#1531#1532#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/data/db/DB.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -1401,84 +1404,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/UserPlantDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="104" column="9" selection-start-line="104" selection-start-column="9" selection-end-line="104" selection-end-column="9" />
-          <folding>
-            <marker date="1491919781880" expanded="true" signature="488:561" ph="UPDATE termi... " />
-            <marker date="1491919781880" expanded="true" signature="1082:1134" ph="DELETE FROM " />
-            <marker date="1491919781880" expanded="true" signature="1552:1624" ph="INSERT INTO termin8_django_plant_owned_by... " />
-            <marker date="1491919781880" expanded="true" signature="2326:2369" ph="SELECT * FRO... termin8_django_plant_owned_by" />
-            <marker date="1491919781880" expanded="true" signature="2971:3024" ph="SELECT * FRO... termin8_django_plant_owned_by" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/UserDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1058">
-          <caret line="31" column="21" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
-          <folding>
-            <marker date="1491747440537" expanded="true" signature="377:528" ph="UPDATE auth_... " />
-            <marker date="1491747440537" expanded="true" signature="1459:1491" ph="DELETE FROM " />
-            <marker date="1491747440537" expanded="true" signature="1891:2042" ph="INSERT INTO auth_user... " />
-            <marker date="1491747440537" expanded="true" signature="3143:3166" ph="SELECT * FRO... auth_user" />
-            <marker date="1491747440537" expanded="true" signature="3733:3766" ph="SELECT * FRO... auth_user" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/WateringHistoryDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1143">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1491747440540" expanded="true" signature="452:548" ph="UPDATE termi... " />
-            <marker date="1491747440540" expanded="true" signature="1314:1367" ph="DELETE FROM " />
-            <marker date="1491747440540" expanded="true" signature="1800:1896" ph="INSERT INTO termin8_django_wateringhistory... " />
-            <marker date="1491747440540" expanded="true" signature="2758:2802" ph="SELECT * FRO... termin8_django_wateringhistory" />
-            <marker date="1491747440540" expanded="true" signature="3427:3481" ph="SELECT * FRO... termin8_django_wateringhistory" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/RoomDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1491747440535" expanded="true" signature="383:431" ph="UPDATE termi... " />
-            <marker date="1491747440535" expanded="true" signature="878:920" ph="DELETE FROM " />
-            <marker date="1491747440535" expanded="true" signature="1322:1370" ph="INSERT INTO termin8_django_room... " />
-            <marker date="1491747440535" expanded="true" signature="1995:2028" ph="SELECT * FRO... termin8_django_room" />
-            <marker date="1491747440535" expanded="true" signature="2601:2644" ph="SELECT * FRO... termin8_django_room" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/data/mapper/SensorHistoryMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/SensorHistoryDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="125" column="24" selection-start-line="125" selection-start-column="24" selection-end-line="125" selection-end-column="24" />
-          <folding>
-            <marker date="1491912875510" expanded="true" signature="496:587" ph="UPDATE termi... " />
-            <marker date="1491912875510" expanded="true" signature="1244:1295" ph="DELETE FROM " />
-            <marker date="1491912875510" expanded="true" signature="1725:1816" ph="INSERT INTO termin8_django_sensorHistory... " />
-            <marker date="1491912875510" expanded="true" signature="2652:2694" ph="SELECT * FRO... termin8_django_sensorHistory" />
-            <marker date="1491912875510" expanded="true" signature="3316:3368" ph="SELECT * FRO... termin8_django_sensorHistory" />
-            <marker date="1491912875510" expanded="true" signature="3840:3916" ph="SELECT * FRO... termin8_django_sensorhistory" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1539,46 +1469,127 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/mapper/PlantMapper.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/runtime/mqtt/MQTTClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+        <state relative-caret-position="119">
+          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/PlantDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/WateringHistoryDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="115" column="0" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
+        <state relative-caret-position="330">
+          <caret line="59" column="12" selection-start-line="59" selection-start-column="12" selection-end-line="59" selection-end-column="12" />
           <folding>
-            <marker date="1491922572107" expanded="true" signature="389:497" ph="UPDATE termi... " />
-            <marker date="1491922572107" expanded="true" signature="1187:1230" ph="DELETE FROM " />
-            <marker date="1491922572107" expanded="true" signature="1633:1741" ph="INSERT INTO termin8_django_plant... " />
-            <marker date="1491922572107" expanded="true" signature="2595:2629" ph="SELECT * FRO... termin8_django_plant" />
-            <marker date="1491922572107" expanded="true" signature="3205:3249" ph="SELECT * FRO... termin8_django_plant" />
+            <element signature="imports" expanded="true" />
+            <marker date="1491923864381" expanded="true" signature="351:447" ph="UPDATE termi... " />
+            <marker date="1491923864381" expanded="true" signature="1213:1266" ph="DELETE FROM " />
+            <marker date="1491923864381" expanded="true" signature="1699:1795" ph="INSERT INTO termin8_django_wateringhistory... " />
+            <marker date="1491923864381" expanded="true" signature="2690:2734" ph="SELECT * FRO... termin8_django_wateringhistory" />
+            <marker date="1491923864381" expanded="true" signature="3359:3413" ph="SELECT * FRO... termin8_django_wateringhistory" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/UserPlantDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="62" column="34" selection-start-line="62" selection-start-column="34" selection-end-line="62" selection-end-column="34" />
+          <folding>
+            <marker date="1491923878205" expanded="true" signature="387:460" ph="UPDATE termi... " />
+            <marker date="1491923878205" expanded="true" signature="981:1033" ph="DELETE FROM " />
+            <marker date="1491923878205" expanded="true" signature="1451:1523" ph="INSERT INTO termin8_django_plant_owned_by... " />
+            <marker date="1491923878205" expanded="true" signature="2258:2301" ph="SELECT * FRO... termin8_django_plant_owned_by" />
+            <marker date="1491923878205" expanded="true" signature="2903:2956" ph="SELECT * FRO... termin8_django_plant_owned_by" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/PlantTypeDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1683">
-          <caret line="108" column="5" selection-start-line="108" selection-start-column="5" selection-end-line="108" selection-end-column="5" />
+        <state relative-caret-position="544">
+          <caret line="53" column="99" selection-start-line="53" selection-start-column="99" selection-end-line="53" selection-end-column="99" />
           <folding>
-            <marker date="1491922751491" expanded="true" signature="411:516" ph="UPDATE termi... " />
-            <marker date="1491922751491" expanded="true" signature="1213:1260" ph="DELETE FROM " />
-            <marker date="1491922751491" expanded="true" signature="1674:1779" ph="INSERT INTO termin8_django_planttype... " />
-            <marker date="1491922751491" expanded="true" signature="2654:2692" ph="SELECT * FRO... termin8_django_planttype" />
-            <marker date="1491922751491" expanded="true" signature="3287:3335" ph="SELECT * FRO... termin8_django_planttype" />
+            <marker date="1491923920188" expanded="true" signature="310:415" ph="UPDATE termi... " />
+            <marker date="1491923920188" expanded="true" signature="1112:1159" ph="DELETE FROM " />
+            <marker date="1491923920188" expanded="true" signature="1573:1678" ph="INSERT INTO termin8_django_planttype... " />
+            <marker date="1491923920188" expanded="true" signature="2586:2624" ph="SELECT * FRO... termin8_django_planttype" />
+            <marker date="1491923920188" expanded="true" signature="3219:3267" ph="SELECT * FRO... termin8_django_planttype" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/data/mapper/PlantMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/PlantDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="889">
+          <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+          <folding>
+            <marker date="1491924778613" expanded="true" signature="291:399" ph="UPDATE termi... " />
+            <marker date="1491924778613" expanded="true" signature="1069:1112" ph="DELETE FROM " />
+            <marker date="1491924778613" expanded="true" signature="1518:1626" ph="INSERT INTO termin8_django_plant... " />
+            <marker date="1491924778613" expanded="true" signature="2508:2542" ph="SELECT * FRO... termin8_django_plant" />
+            <marker date="1491924778613" expanded="true" signature="3124:3168" ph="SELECT * FRO... termin8_django_plant" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/SensorHistoryDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="55" column="99" selection-start-line="55" selection-start-column="99" selection-end-line="55" selection-end-column="99" />
+          <folding>
+            <marker date="1491923905766" expanded="true" signature="395:486" ph="UPDATE termi... " />
+            <marker date="1491923905766" expanded="true" signature="1143:1194" ph="DELETE FROM " />
+            <marker date="1491923905766" expanded="true" signature="1624:1715" ph="INSERT INTO termin8_django_sensorHistory... " />
+            <marker date="1491923905766" expanded="true" signature="2584:2626" ph="SELECT * FRO... termin8_django_sensorHistory" />
+            <marker date="1491923905766" expanded="true" signature="3248:3300" ph="SELECT * FRO... termin8_django_sensorHistory" />
+            <marker date="1491923905766" expanded="true" signature="3772:3848" ph="SELECT * FRO... termin8_django_sensorhistory" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/RoomDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="46" column="99" selection-start-line="46" selection-start-column="99" selection-end-line="46" selection-end-column="99" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1491924782941" expanded="true" signature="283:331" ph="UPDATE termi... " />
+            <marker date="1491924782941" expanded="true" signature="779:821" ph="DELETE FROM " />
+            <marker date="1491924782941" expanded="true" signature="1223:1271" ph="INSERT INTO termin8_django_room... " />
+            <marker date="1491924782941" expanded="true" signature="1933:1966" ph="SELECT * FRO... termin8_django_room" />
+            <marker date="1491924782941" expanded="true" signature="2543:2586" ph="SELECT * FRO... termin8_django_room" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/data/dao/UserDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="67" column="45" selection-start-line="67" selection-start-column="45" selection-end-line="67" selection-end-column="45" />
+          <folding>
+            <marker date="1491924785398" expanded="true" signature="284:435" ph="UPDATE auth_... " />
+            <marker date="1491924785398" expanded="true" signature="1353:1385" ph="DELETE FROM " />
+            <marker date="1491924785398" expanded="true" signature="1788:1939" ph="INSERT INTO auth_user... " />
+            <marker date="1491924785398" expanded="true" signature="3068:3091" ph="SELECT * FRO... auth_user" />
+            <marker date="1491924785398" expanded="true" signature="3668:3701" ph="SELECT * FRO... auth_user" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/runtime/main/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1632">
-          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+        <state relative-caret-position="1135">
+          <caret line="92" column="35" selection-start-line="92" selection-start-column="33" selection-end-line="92" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

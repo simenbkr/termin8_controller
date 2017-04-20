@@ -6,10 +6,7 @@ import data.mapper.UserPlantMapper;
 import data.models.SensorHistory;
 import data.models.UserPlant;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,7 +50,7 @@ public class UserPlantDAO implements IDAO<UserPlant> {
         int lastId = -1;
         try {
             Connection connection = DB.getConnection();
-            PreparedStatement st = connection.prepareStatement(sql);
+            PreparedStatement st = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             st.setInt(1, userPlant.getPlant_id());
             st.setInt(2, userPlant.getUser_id());
 
