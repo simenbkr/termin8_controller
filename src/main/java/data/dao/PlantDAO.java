@@ -88,7 +88,7 @@ public class PlantDAO implements IDAO<Plant> {
             connection.close();
             return plantList;
         } catch (SQLException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             return null;
         }
     }
@@ -103,7 +103,7 @@ public class PlantDAO implements IDAO<Plant> {
             rs.next();
             return new PlantMapper().mapRow(rs, 0);
         } catch (SQLException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             return null;
         }
     }
