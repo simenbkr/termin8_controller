@@ -26,6 +26,7 @@ public class MQTTClient {
             this.client.setKeepAlive(keepAliveTimer);
             this.client.setWillTopic(lastWillTopic);
             this.client.setWillMessage(lastWillMessage);
+            this.client.setCleanSession(true);
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }

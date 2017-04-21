@@ -101,7 +101,7 @@ public class SensorHistoryDAO implements IDAO<SensorHistory> {
             rs.next();
             return new SensorHistoryMapper().mapRow(rs, 0);
         } catch (SQLException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             return null;
         }
     }
@@ -119,7 +119,7 @@ public class SensorHistoryDAO implements IDAO<SensorHistory> {
             connection.close();
             return sh;
         } catch (SQLException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             return null;
         }
     }

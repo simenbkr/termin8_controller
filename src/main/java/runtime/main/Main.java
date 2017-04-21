@@ -70,7 +70,14 @@ public class Main {
                         String[] topicParts = message.getTopic().split("/");
                         int plant_id = Integer.valueOf(topicParts[1]);
                         String[] content = (new String(message.getPayload())).split(":");
-                        int time = Integer.valueOf(content[1]);
+                        debugPrint("Topic: " + message.getTopic() + "\n");
+                        debugPrint("Message: " + new String(message.getPayload()) + "\n");
+                        int time;
+                        try {
+                            time = Integer.valueOf(content[1]);
+                        } catch(Exception e){
+                            time = 1;
+                        }
 
                         Plant plant = new PlantDAO().getByID(plant_id);
                         if(plant != null) {
@@ -114,6 +121,10 @@ public class Main {
 
             SensorHistory lastHistory = new SensorHistoryDAO().getLastByPlantId(plant.getId());
             PlantType type = plant.getPlantType();
+            if (lastHistory == null || type == null) {
+                debugPrint("Lasthistory or PlantType was null. Skipping..");
+                continue;
+            }
             if (lastHistory.getMoisture() < type.getMin_moisture()) {
                 //Needs watering
                 if (plant.isAutomatic_water()) {
@@ -211,7 +222,7 @@ public class Main {
             //Sleep for 1s so as not to kill the poor RPi.
             debugPrint("Sleeping for 1s.");
             try {
-                TimeUnit.SECONDS.sleep(1);
+                TimeUnit.SECONDS.sleep(10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 debugPrint("Could not sleep. Insomnia sucks, amirite?");
