@@ -222,7 +222,7 @@ public class Main {
             //Sleep for 1s so as not to kill the poor RPi.
             debugPrint("Sleeping for 1s.");
             try {
-                TimeUnit.SECONDS.sleep(10);
+                TimeUnit.SECONDS.sleep(1);
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 debugPrint("Could not sleep. Insomnia sucks, amirite?");
