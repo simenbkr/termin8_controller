@@ -54,7 +54,7 @@ public class Main {
         if(plant == null){
             return;
         }
-        
+
         plant.setLast_watered(new Timestamp(System.currentTimeMillis()));
         new PlantDAO().update(plant);
 
@@ -143,6 +143,11 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
             debugPrint("Something went wrong trying to receive, and/or process MQTT-messages");
+        }
+        try {
+            connection.disconnect();
+        } catch (Exception e) {
+            //e.printStackTrace();
         }
 
     }
