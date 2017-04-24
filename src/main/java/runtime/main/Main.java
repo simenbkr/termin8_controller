@@ -15,6 +15,7 @@ import org.fusesource.mqtt.client.Topic;
 import runtime.mqtt.MQTTClient;
 
 import java.sql.Connection;
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
@@ -23,6 +24,8 @@ public class Main {
 
     private final static String TOPIC_PREFIX = "controller";
     private final static String TOPIC = TOPIC_PREFIX + "/#";
+    private final static String DATA_PREFIX = "data";
+    private final static String DATA_TOPIC = DATA_PREFIX + "/#";
     private final static boolean DEBUG = true;
 
     private static void debugPrint(String message) {
@@ -36,7 +39,7 @@ public class Main {
         BlockingConnection connection;
         try {
             connection = MQTTClient.getConnection();
-            Topic[] topics = {new Topic(TOPIC, QoS.AT_LEAST_ONCE)};
+            Topic[] topics = {new Topic(TOPIC, QoS.AT_LEAST_ONCE), new Topic(DATA_TOPIC, QoS.AT_LEAST_ONCE)};
             byte[] response = connection.subscribe(topics);
             return connection;
         } catch (Exception e) {
@@ -89,11 +92,39 @@ public class Main {
                                     false);
 
                             debugPrint("Received a message! Topic: " + message.getTopic());
-                        } else {
+                        }
+                        else {
                             debugPrint("Received a message about a plant which does not exist.. The topic was: " + message.getTopic());
                         }
                         message.ack();
-                    } else {
+                    }
+                    else if(message.getTopic().startsWith(DATA_PREFIX)){
+                        /*
+                        Expected format:
+                        Time is in seconds since epoch, temp and moisture as floating point numbers.
+                        data is posted to data/<plantid> as time:temp:moisture
+                         */
+
+                        String[] topicParts = message.getTopic().split("/");
+                        int plant_id = Integer.valueOf(topicParts[0]);
+                        Plant plant = new PlantDAO().getByID(plant_id);
+                        if (plant != null) {
+                            String[] content = (new String(message.getPayload())).split(":");
+                            int secs = Integer.valueOf(content[0]);
+                            Timestamp timestamp = new Timestamp(secs);
+                            float temp = Integer.valueOf(content[1]);
+                            float moisture = Integer.valueOf(content[2]);
+
+                            SensorHistory history = new SensorHistory(80085, temp, moisture, plant_id, timestamp);
+                            new SensorHistoryDAO().create(history);
+
+                            debugPrint("Created a new sensorhistory for plant with id " + plant_id + ".");
+                        } else {
+                            debugPrint("Plant with id " + plant_id + " does not seem to exists.. Skipping data-add.");
+                        }
+
+                    }
+                    else {
                         debugPrint("This should not happen... received a message from a topic which we are not subscribed to.");
                     }
                 } catch(Exception e){
