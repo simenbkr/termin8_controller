@@ -134,6 +134,7 @@ public class Main {
                     }
                     else {
                         debugPrint("This should not happen... received a message from a topic which we are not subscribed to.");
+                        message.ack();
                     }
                 } catch(Exception e){
                     e.printStackTrace();

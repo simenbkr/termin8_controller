@@ -98,7 +98,9 @@ public class PlantTypeDAO implements IDAO<PlantType> {
             ResultSet rs = connection.createStatement().executeQuery(sql);
             rs.beforeFirst();
             rs.next();
-            return new PlantTypeMapper().mapRow(rs, 0);
+            PlantType type = new PlantTypeMapper().mapRow(rs, 0);
+            connection.close();
+            return type;
         } catch(SQLException e){
             e.printStackTrace();
             return null;
