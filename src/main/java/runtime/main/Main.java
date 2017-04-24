@@ -51,16 +51,24 @@ public class Main {
     }
 
     private static void updatePlant(Plant plant){
+        if(plant == null){
+            return;
+        }
+        
         plant.setLast_watered(new Timestamp(System.currentTimeMillis()));
         new PlantDAO().update(plant);
 
         SensorHistory lastHistory = new SensorHistoryDAO().getLastByPlantId(plant.getId());
-        WateringHistory wateringHistory = new WateringHistory(9999,lastHistory.getTemp(),
-                lastHistory.getMoisture(),
-                new Timestamp(System.currentTimeMillis()),
-                plant.getId());
 
-        new WateringHistoryDAO().create(wateringHistory);
+        if (lastHistory != null) {
+
+            WateringHistory wateringHistory = new WateringHistory(9999, lastHistory.getTemp(),
+                    lastHistory.getMoisture(),
+                    new Timestamp(System.currentTimeMillis()),
+                    plant.getId());
+
+            new WateringHistoryDAO().create(wateringHistory);
+        }
     }
 
     private static void checkMQTT(BlockingConnection connection) {
