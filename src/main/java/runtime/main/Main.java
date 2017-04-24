@@ -144,12 +144,6 @@ public class Main {
             e.printStackTrace();
             debugPrint("Something went wrong trying to receive, and/or process MQTT-messages");
         }
-        try {
-            connection.disconnect();
-        } catch (Exception e) {
-            //e.printStackTrace();
-        }
-
     }
 
     private static void checkDB(Connection connection, BlockingConnection MQTTConnection) {
