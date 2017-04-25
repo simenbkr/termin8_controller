@@ -74,8 +74,13 @@ public class Main {
     private static void checkMQTT(BlockingConnection connection) {
         Message message;
         try {
-            while ( (message = connection.receive(1, TimeUnit.SECONDS)) != null) {
+            //while ( (message = connection.receive()) != null) {
+            while (true) {
+                message = connection.receive(1,TimeUnit.MILLISECONDS);
+                if (message == null)
+                    break;
 
+                debugPrint(message.toString());
                 try {
                     if (message.getTopic().startsWith(TOPIC_PREFIX)) {
                         String[] topicParts = message.getTopic().split("/");
@@ -120,8 +125,8 @@ public class Main {
                             String[] content = (new String(message.getPayload())).split(":");
                             int secs = Integer.valueOf(content[0]);
                             Timestamp timestamp = new Timestamp(secs);
-                            float temp = Integer.valueOf(content[1]);
-                            float moisture = Integer.valueOf(content[2]);
+                            float temp = Float.valueOf(content[1]);
+                            float moisture = Float.valueOf(content[2]);
 
                             SensorHistory history = new SensorHistory(80085, temp, moisture, plant_id, timestamp);
                             new SensorHistoryDAO().create(history);
