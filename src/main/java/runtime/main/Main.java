@@ -171,7 +171,10 @@ public class Main {
             }
             if (lastHistory.getMoisture() < type.getMin_moisture()) {
                 //Needs watering
-                if (plant.isAutomatic_water()) {
+                Timestamp timestamp = plant.getLast_watered();
+                long millis = timestamp.getTime();
+                //Gotta get that timer so we dont overwater that shit.
+                if (plant.isAutomatic_water() && System.currentTimeMillis() - millis > 600*100) {
                     //Water that shit!
                     debugPrint("Plant with id " + plant.getId() + " needs watering. Sending message to RPi.");
                     try {
