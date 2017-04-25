@@ -174,7 +174,9 @@ public class Main {
                 Timestamp timestamp = plant.getLast_watered();
                 long millis = timestamp.getTime();
                 //Gotta get that timer so we dont overwater that shit.
-                if (plant.isAutomatic_water() && System.currentTimeMillis() - millis > 600*100) {
+
+                //debugPrint(System.currentTimeMillis() - millis + "");
+                if (plant.isAutomatic_water() && Math.abs(System.currentTimeMillis() - millis) > (long) 600*100) {
                     //Water that shit!
                     debugPrint("Plant with id " + plant.getId() + " needs watering. Sending message to RPi.");
                     try {
