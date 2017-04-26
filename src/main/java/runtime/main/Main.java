@@ -26,6 +26,7 @@ public class Main {
     private final static String TOPIC = TOPIC_PREFIX + "/#";
     private final static String DATA_PREFIX = "data";
     private final static String DATA_TOPIC = DATA_PREFIX + "/#";
+    private final static long REFRESH_TIME = 1000 * 3600 * 10;
     private final static boolean DEBUG = true;
 
     private static void debugPrint(String message) {
@@ -239,8 +240,20 @@ public class Main {
 
         BlockingConnection MQTTconnection = establishMQTTConnection();
         Connection DBConnection = DB.getConnection();
+        long last_refresh = System.currentTimeMillis();
 
         while (true) {
+
+            if (System.currentTimeMillis() - last_refresh > REFRESH_TIME && MQTTconnection != null){
+                debugPrint("Trying to refresh MQTT connection..");
+                try {
+                    MQTTconnection.disconnect();
+                } catch (Exception e) {
+                    //e.printStackTrace();
+                }
+                MQTTconnection = establishMQTTConnection();
+                debugPrint("MQTT connection refreshed.");
+            }
 
             debugPrint("Checking MQTT connection..");
             if (MQTTconnection == null) {
