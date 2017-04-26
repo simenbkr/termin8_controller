@@ -252,6 +252,7 @@ public class Main {
                     //e.printStackTrace();
                 }
                 MQTTconnection = establishMQTTConnection();
+                last_refresh = System.currentTimeMillis();
                 debugPrint("MQTT connection refreshed.");
             }
 
