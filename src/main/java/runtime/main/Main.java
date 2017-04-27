@@ -182,7 +182,7 @@ public class Main {
                     debugPrint("Plant with id " + plant.getId() + " needs watering. Sending message to RPi.");
                     try {
                         MQTTConnection.publish("water/" + plant.getId(),
-                                "start".getBytes(),
+                                "start:time:1".getBytes(),
                                 QoS.EXACTLY_ONCE,
                                 false);
 
