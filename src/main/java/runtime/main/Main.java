@@ -94,7 +94,7 @@ public class Main {
                         }
                     } else if(topic.startsWith(DATA_PREFIX)){
                         String[] topicParts = topic.split("/");
-                        int plant_id = Integer.valueOf(topicParts[0]);
+                        int plant_id = Integer.valueOf(topicParts[1]);
                         Plant plant = new PlantDAO().getByID(plant_id);
 
                         if(plant != null) {
