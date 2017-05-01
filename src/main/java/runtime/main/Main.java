@@ -8,14 +8,13 @@ import data.models.Plant;
 import data.models.PlantType;
 import data.models.SensorHistory;
 import data.models.WateringHistory;
-import org.fusesource.mqtt.client.BlockingConnection;
-import org.fusesource.mqtt.client.Message;
-import org.fusesource.mqtt.client.QoS;
-import org.fusesource.mqtt.client.Topic;
-import runtime.mqtt.MQTTClient;
-
+import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
+import org.eclipse.paho.client.mqttv3.MqttCallback;
+import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttMessage;
+import java.util.concurrent.CountDownLatch;
+import runtime.mqtt.MQTTClient2;
 import java.sql.Connection;
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
@@ -28,6 +27,7 @@ public class Main {
     private final static String DATA_TOPIC = DATA_PREFIX + "/#";
     private final static long REFRESH_TIME = 1000 * 3600 * 10;
     private final static boolean DEBUG = true;
+    private final static CountDownLatch latch = new CountDownLatch(10);
 
     private static void debugPrint(String message) {
         if (DEBUG) {
@@ -36,6 +36,7 @@ public class Main {
     }
 
 
+    /*
     private static BlockingConnection establishMQTTConnection() {
         BlockingConnection connection;
         try {
@@ -49,6 +50,84 @@ public class Main {
                     " to the wanted topics.");
             return null;
         }
+    }
+    */
+
+    private static MqttClient establishMQTTConnection(){
+        MqttClient client;
+
+        try {
+
+            client = new MQTTClient2().getClient();
+
+            client.setCallback(new MqttCallback() {
+                @Override
+                public void connectionLost(Throwable throwable) {
+                    debugPrint("Lost connection to broker..");
+                    latch.countDown();
+                }
+
+                @Override
+                public void messageArrived(String topic, MqttMessage mqttMessage) throws Exception {
+
+                    debugPrint("Recieved a message:\n Topic: " + topic + "\n Message: " + new String(mqttMessage.getPayload()));
+
+                    if(topic.startsWith(TOPIC_PREFIX)){
+                        int plant_id = Integer.valueOf(topic.split("/")[1]);
+                        Plant plant = new PlantDAO().getByID(plant_id);
+                        String[] content = new String(mqttMessage.getPayload()).split(":");
+                        if (plant != null){
+                            int time;
+                            try {
+                                time = Integer.valueOf(content[1]);
+                            } catch(Exception e){
+                                time = 1;
+                            }
+
+                            updatePlant(plant);
+                            String payload = "start:time:" + time;
+                            client.publish("water/" + plant_id,
+                                    payload.getBytes(),
+                                    2,
+                                    false);
+
+                        }
+                    } else if(topic.startsWith(DATA_PREFIX)){
+                        String[] topicParts = topic.split("/");
+                        int plant_id = Integer.valueOf(topicParts[0]);
+                        Plant plant = new PlantDAO().getByID(plant_id);
+
+                        if(plant != null) {
+                            String[] content = new String(mqttMessage.getPayload()).split(":");
+                            int secs = Integer.valueOf(content[0]);
+                            Timestamp timestamp = new Timestamp(secs);
+                            float temp = Float.valueOf(content[1]);
+                            float moisture = Float.valueOf(content[2]);
+
+                            SensorHistory history = new SensorHistory(80085, temp, moisture, plant_id, timestamp);
+                            new SensorHistoryDAO().create(history);
+                        }
+                    }
+
+                    latch.countDown();
+
+
+                }
+
+                @Override
+                public void deliveryComplete(IMqttDeliveryToken iMqttDeliveryToken) {
+                    latch.countDown();
+                }
+            });
+            client.subscribe(TOPIC);
+            client.subscribe(DATA_TOPIC);
+            client.setTimeToWait((long) 50);
+
+        } catch (Exception e){
+            //e.printstacktrace()asdasd;
+            return null;
+        }
+        return client;
     }
 
     private static void updatePlant(Plant plant){
@@ -72,7 +151,7 @@ public class Main {
         }
     }
 
-    private static void checkMQTT(BlockingConnection connection) {
+    /*private static void checkMQTT(BlockingConnection connection) {
         Message message;
         try {
             //while ( (message = connection.receive()) != null) {
@@ -113,11 +192,13 @@ public class Main {
                         message.ack();
                     }
                     else if(message.getTopic().startsWith(DATA_PREFIX)){
+                    */
                         /*
                         Expected format:
                         Time is in seconds since epoch, temp and moisture as floating point numbers.
                         data is posted to data/<plantid> as time:temp:moisture
                          */
+                        /*
 
                         String[] topicParts = message.getTopic().split("/");
                         int plant_id = Integer.valueOf(topicParts[0]);
@@ -152,8 +233,9 @@ public class Main {
             debugPrint("Something went wrong trying to receive, and/or process MQTT-messages");
         }
     }
+    */
 
-    private static void checkDB(Connection connection, BlockingConnection MQTTConnection) {
+    private static void checkDB(Connection connection, MqttClient MQTTConnection) {
 
         if (connection == null || MQTTConnection == null) {
             return;
@@ -183,7 +265,7 @@ public class Main {
                     try {
                         MQTTConnection.publish("water/" + plant.getId(),
                                 "start:time:1".getBytes(),
-                                QoS.EXACTLY_ONCE,
+                                2,
                                 false);
 
                         updatePlant(plant);
@@ -205,7 +287,7 @@ public class Main {
                     try {
                         MQTTConnection.publish("water/" + plant.getId(),
                                 "stop".getBytes(),
-                                QoS.AT_LEAST_ONCE,
+                                2,
                                 false);
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -230,7 +312,7 @@ public class Main {
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         /*
         Main-function which will be an infinite loop
         going over database-data, checking for constraints,
@@ -238,45 +320,29 @@ public class Main {
         on a regular schedule.
          */
 
-        BlockingConnection MQTTconnection = establishMQTTConnection();
+        //BlockingConnection MQTTconnection = establishMQTTConnection();
+        MqttClient client = establishMQTTConnection();
         Connection DBConnection = DB.getConnection();
-        long last_refresh = System.currentTimeMillis();
 
         while (true) {
 
-            if (System.currentTimeMillis() - last_refresh > REFRESH_TIME && MQTTconnection != null){
-                debugPrint("Trying to refresh MQTT connection..");
-                try {
-                    MQTTconnection.disconnect();
-                } catch (Exception e) {
-                    //e.printStackTrace();
-                }
-                MQTTconnection = establishMQTTConnection();
-                last_refresh = System.currentTimeMillis();
-                debugPrint("MQTT connection refreshed.");
-            }
-
             debugPrint("Checking MQTT connection..");
-            if (MQTTconnection == null) {
-                MQTTconnection = establishMQTTConnection();
+            if (client == null || !client.isConnected()) {
+                client = establishMQTTConnection();
             }
 
-            if (MQTTconnection != null) {
-                debugPrint("MQTT connection OK; checking for messages to subscribed topics.");
-                checkMQTT(MQTTconnection);
-            } else {
-                debugPrint("Could not establish a connection to the MQTT-broker - " +
-                        "function returned null while establishing a connection.");
-            }
+            //if (client != null)
+                //client
+
 
             debugPrint("Checking DB connection..");
             if (DBConnection == null) {
                 DBConnection = DB.getConnection();
             }
 
-            if (DBConnection != null && MQTTconnection != null) {
+            if (DBConnection != null && client != null) {
                 debugPrint("DB connection OK; checking for constraints.");
-                checkDB(DBConnection, MQTTconnection);
+                checkDB(DBConnection, client);
             } else {
                 debugPrint("Could not establish a connection with the database server - function returned null" +
                         " while establishing a connection.");
