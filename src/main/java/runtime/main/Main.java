@@ -13,7 +13,8 @@ import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import java.util.concurrent.CountDownLatch;
-import runtime.mqtt.MQTTClient2;
+
+import runtime.mqtt.MQTTClient;
 import java.sql.Connection;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -36,29 +37,12 @@ public class Main {
     }
 
 
-    /*
-    private static BlockingConnection establishMQTTConnection() {
-        BlockingConnection connection;
-        try {
-            connection = MQTTClient.getConnection();
-            Topic[] topics = {new Topic(TOPIC, QoS.AT_LEAST_ONCE), new Topic(DATA_TOPIC, QoS.AT_LEAST_ONCE)};
-            byte[] response = connection.subscribe(topics);
-            return connection;
-        } catch (Exception e) {
-            e.printStackTrace();
-            debugPrint("Something went wrong while trying to establish an MQTT-connection and subscribing" +
-                    " to the wanted topics.");
-            return null;
-        }
-    }
-    */
-
     private static MqttClient establishMQTTConnection(){
         MqttClient client;
 
         try {
 
-            client = new MQTTClient2().getClient();
+            client = new MQTTClient().getClient();
 
             client.setCallback(new MqttCallback() {
                 @Override
@@ -150,90 +134,6 @@ public class Main {
             new WateringHistoryDAO().create(wateringHistory);
         }
     }
-
-    /*private static void checkMQTT(BlockingConnection connection) {
-        Message message;
-        try {
-            //while ( (message = connection.receive()) != null) {
-            while (true) {
-                message = connection.receive(1,TimeUnit.MILLISECONDS);
-                if (message == null)
-                    break;
-
-                debugPrint(message.toString());
-                try {
-                    if (message.getTopic().startsWith(TOPIC_PREFIX)) {
-                        String[] topicParts = message.getTopic().split("/");
-                        int plant_id = Integer.valueOf(topicParts[1]);
-                        String[] content = (new String(message.getPayload())).split(":");
-                        debugPrint("Topic: " + message.getTopic() + "\n");
-                        debugPrint("Message: " + new String(message.getPayload()) + "\n");
-                        int time;
-                        try {
-                            time = Integer.valueOf(content[1]);
-                        } catch(Exception e){
-                            time = 1;
-                        }
-
-                        Plant plant = new PlantDAO().getByID(plant_id);
-                        if(plant != null) {
-                            updatePlant(plant);
-                            String payload = "start:" + "time:" + time;
-                            connection.publish("water/" + plant.getId(),
-                                    payload.getBytes(),
-                                    QoS.EXACTLY_ONCE,
-                                    false);
-
-                            debugPrint("Received a message! Topic: " + message.getTopic());
-                        }
-                        else {
-                            debugPrint("Received a message about a plant which does not exist.. The topic was: " + message.getTopic());
-                        }
-                        message.ack();
-                    }
-                    else if(message.getTopic().startsWith(DATA_PREFIX)){
-                    */
-                        /*
-                        Expected format:
-                        Time is in seconds since epoch, temp and moisture as floating point numbers.
-                        data is posted to data/<plantid> as time:temp:moisture
-                         */
-                        /*
-
-                        String[] topicParts = message.getTopic().split("/");
-                        int plant_id = Integer.valueOf(topicParts[0]);
-                        Plant plant = new PlantDAO().getByID(plant_id);
-                        if (plant != null) {
-                            String[] content = (new String(message.getPayload())).split(":");
-                            int secs = Integer.valueOf(content[0]);
-                            Timestamp timestamp = new Timestamp(secs);
-                            float temp = Float.valueOf(content[1]);
-                            float moisture = Float.valueOf(content[2]);
-
-                            SensorHistory history = new SensorHistory(80085, temp, moisture, plant_id, timestamp);
-                            new SensorHistoryDAO().create(history);
-
-                            debugPrint("Created a new sensorhistory for plant with id " + plant_id + ".");
-                        } else {
-                            debugPrint("Plant with id " + plant_id + " does not seem to exists.. Skipping data-add.");
-                        }
-
-                    }
-                    else {
-                        debugPrint("This should not happen... received a message from a topic which we are not subscribed to.");
-                        message.ack();
-                    }
-                } catch(Exception e){
-                    e.printStackTrace();
-                    debugPrint("Something went wrong trying to checkMQTT.");
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            debugPrint("Something went wrong trying to receive, and/or process MQTT-messages");
-        }
-    }
-    */
 
     private static void checkDB(Connection connection, MqttClient MQTTConnection) {
 
